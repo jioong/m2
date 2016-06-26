@@ -6,16 +6,20 @@ import java.io.*;
 
 public class FileDownloader implements Downloader {
 
-    public void download(String readPath) {
+    private static final int DEFAULT_THREAD_NUMBER = Runtime.getRuntime().availableProcessors() * 2;
 
+    public void download(String readPath) {
+        download(readPath, DEFAULT_THREAD_NUMBER);
     }
 
     public void download(String readPath, int threadNum) {
-
+        File file = new File(readPath);
+        String filename = file.getName();
+        downloadTo(readPath, filename, threadNum);
     }
 
     public void downloadTo(String readPath, String storePath) {
-
+        downloadTo(readPath, storePath, DEFAULT_THREAD_NUMBER);
     }
 
     public void downloadTo(String readPath, String storePath, int threadNum) {
