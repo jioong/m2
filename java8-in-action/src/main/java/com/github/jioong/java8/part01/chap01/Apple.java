@@ -26,6 +26,18 @@ public class Apple {
         return result;
     }
 
+    public static List<Apple> filterApple(List<Apple> inventory, Predicate p) {
+        List<Apple> result = new ArrayList<>();
+
+        for(Apple apple : inventory) {
+            if(p.test(apple.getColor())) {
+                result.add(apple);
+            }
+        }
+        return result;
+    }
+
+
     public String getColor() {
         return color;
     }
